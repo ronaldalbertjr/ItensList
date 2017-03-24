@@ -2,6 +2,7 @@
 Task asked in TPJ2 subject to develop a chained list of itens and then iterate over it
 
 Itens available in the list:
+
 Leftovers
 
 Potion
@@ -12,7 +13,7 @@ Moon Stone
 
 Miracle Seed
 
-Poke Ball;
+Poke Ball
 
 TwistedSpoon
 
