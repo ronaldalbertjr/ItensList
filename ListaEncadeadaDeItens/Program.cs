@@ -8,16 +8,16 @@ namespace ListaEncadeadaDeItens
 {
     class Program
     {
-        static Itens item1 = new Itens(0, "Leftovers", 1);
-        static Itens item2 = new Itens(1, "Potion", 20);
-        static Itens item3 = new Itens(2, "Lucky Egg", 3);
-        static Itens item4 = new Itens(3, "Moon Stone", 1);
-        static Itens item5 = new Itens(4, "Miracle Seed", 7);
-        static Itens item6 = new Itens(5, "Quick Claw", 3);
-        static Itens item7 = new Itens(6, "Poke Ball", 60);
-        static Itens item8 = new Itens(7, "Revive", 10);
-        static Itens item9 = new Itens(8, "Amulet Coin", 5);
-        static Itens item10 = new Itens(9, "TwistedSpoon", 1);
+        static Itens item1 = new Itens(0, "Leftovers", 1, null);
+        static Itens item2 = new Itens(1, "Potion", 20, item1);
+        static Itens item3 = new Itens(2, "Lucky Egg", 3, item2);
+        static Itens item4 = new Itens(3, "Moon Stone", 1, item3);
+        static Itens item5 = new Itens(4, "Miracle Seed", 7, item4);
+        static Itens item6 = new Itens(5, "Quick Claw", 3, item5);
+        static Itens item7 = new Itens(6, "Poke Ball", 60, item6);
+        static Itens item8 = new Itens(7, "Revive", 10, item7);
+        static Itens item9 = new Itens(8, "Amulet Coin", 5, item8);
+        static Itens item10 = new Itens(9, "TwistedSpoon", 1, item9);
         static void Main(string[] args)
         {
             item1.next = item2;
@@ -81,9 +81,11 @@ namespace ListaEncadeadaDeItens
         public string nome;
         public int quantidade;
         public Itens next;
+        public Itens previous;
 
-        public Itens(int Pos, string Nome, int Quantidade)
+        public Itens(int Pos, string Nome, int Quantidade, Itens Previous)
         {
+            previous = Previous;
             pos = Pos;
             nome = Nome;
             quantidade = Quantidade;
@@ -92,6 +94,18 @@ namespace ListaEncadeadaDeItens
         public void RemoveNextItem()
         {
             next = next.next;
+        }
+
+        public void Remove()
+        {
+            if (previous != null)
+            {
+                previous.next = next;
+            }
+            if(next != null)
+            {
+                next.previous = previous;
+            }
         }
     }
 }
